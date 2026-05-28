@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         // 2. Tentative de connexion via le guard standard (web)
         // Le paramètre 'remember' permet de garder la session active plus longtemps
-        if (! Auth::attempt($credentials, $request->boolean('remember'))) {
+        if (! Auth::guard('web')->attempt($credentials, $request->boolean('remember'))) {
             throw ValidationException::withMessages([
                 'email' => ['Les identifiants fournis sont incorrects.'],
             ]);
