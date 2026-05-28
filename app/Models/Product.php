@@ -18,6 +18,8 @@ class Product extends Model
         'name',
         'slug',
         'price_m2',
+        'promo_price_m2',
+        'promo_label',
         'dimension',
         'type',
         'finition',
@@ -37,6 +39,7 @@ class Product extends Model
     {
         return [
             'price_m2' => 'integer',
+            'promo_price_m2' => 'integer',
             'images' => 'array',
             'popular' => 'boolean',
         ];
