@@ -86,16 +86,7 @@ class RealizationController extends Controller
                 'image' => 'image|mimes:jpeg,png,jpg,webp|max:5120'
             ]);
 
-            // Supprimer l'ancienne image physique si elle existe
-            if ($realization->image) {
-                // Extrait le chemin relatif du fichier à partir de l'URL stockée
-                $oldPath = str_replace(asset('storage/'), '', $realization->image);
-                if (Storage::disk('public')->exists($oldPath)) {
-                    Storage::disk('public')->delete($oldPath);
-                }
-            }
-
-            // Enregistrer la nouvelle image
+            // Enregistrer la nouvelle image sans supprimer l'ancienne du serveur
             $path = $request->file('image')->store('realisations', 'public');
             $data['image'] = asset('storage/' . $path);
         } else {
