@@ -12,10 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('estimates', function (Blueprint $table) {
-            $table->string('client_email')->after('client_name');
-            $table->string('client_phone', 20)->nullable()->after('client_email');
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending')->after('estimate_date');
-            $table->decimal('total_amount', 10, 2)->default(0)->after('status');
+            if (!Schema::hasColumn('estimates', 'client_email')) {
+                $table->string('client_email')->after('client_name');
+            }
+
+            if (!Schema::hasColumn('estimates', 'client_phone')) {
+                $table->string('client_phone', 20)->nullable()->after('client_email');
+            }
+
+            if (!Schema::hasColumn('estimates', 'status')) {
+                $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending')->after('estimate_date');
+            }
+
+            if (!Schema::hasColumn('estimates', 'total_amount')) {
+                $table->decimal('total_amount', 10, 2)->default(0)->after('status');
+            }
         });
     }
 

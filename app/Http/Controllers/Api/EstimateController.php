@@ -13,6 +13,7 @@ class EstimateController extends Controller
     //La réception publique d'une demande de devis (POST /api/estimates).
     public function store(Request $request)
     {
+        \Log::debug('EstimateController.store payload', $request->all());
         $validated = $request->validate([
             'client_name'         => 'required|string|max:255',
             'client_email'        => 'required|email|max:255',
