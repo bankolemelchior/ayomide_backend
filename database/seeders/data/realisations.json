@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "Résidence Les Palmiers",
+    "category": "Électricité",
+    "location": "Abidjan, Cocody",
+    "image": "/images/realisations/rea1.jpeg",
+    "description": "Pose de carreaux 60x60 vitrifiés dans une résidence de luxe. Surface totale de 450m² avec finitions haut de gamme.",
+    "date": "2024",
+    "client": "Promoteur immobilier"
+  },
+  {
+    "id": 2,
+    "title": "Immeuble Le Cèdre",
+    "category": "Électricité",
+    "location": "Abidjan, Plateau",
+    "image": "/images/realisations/rea2.jpeg",
+    "description": "Installation électrique complète pour un immeuble de 8 étages. Mise aux normes et tableau électrique intelligent.",
+    "date": "2023",
+    "client": "SCI Immobilier"
+  },
+  {
+    "id": 3,
+    "title": "Villa Kouté",
+    "category": "Électricité",
+    "location": "Abidjan, Riviera",
+    "image": "/images/realisations/rea3.jpeg",
+    "description": "Travaux de peinture intérieure et extérieure pour une villa de 350m². Utilisation de peintures écologiques.",
+    "date": "2024",
+    "client": "Famille Koné"
+  },
+  {
+    "id": 4,
+    "title": "Villa Kouté",
+    "category": "Carrelage",
+    "location": "Abidjan, Riviera",
+    "image": "/images/realisations/rea10.jpeg",
+    "description": "Travaux de peinture intérieure et extérieure pour une villa de 350m². Utilisation de peintures écologiques.",
+    "date": "2024",
+    "client": "Famille Koné"
+  },
+  {
+    "id": 5,
+    "title": "Showroom Carrelage",
+    "category": "Électricité",
+    "location": "Abidjan, Marcory",
+    "image": "/images/realisations/rea5.jpeg",
+    "description": "Aménagement d'un showroom de 200m² avec différentes finitions et motifs de carrelage.",
+    "date": "2024",
+    "client": "Distributeur local"
+  },
+  {
+    "id": 6,
+    "title": "Installation Domotique",
+    "category": "Électricité",
+    "location": "Abidjan, Deux-Plateaux",
+    "image": "/images/realisations/rea6.jpeg",
+    "description": "Installation d'un système domotique complet pour une villa moderne : éclairage, volets, climatisation et sécurité.",
+    "date": "2024",
+    "client": "M. Diallo"
+  },
+  {
+    "id": 7,
+    "title": "Nouvel Appartement",
+    "category": "Peinture",
+    "location": "Abidjan, Zone 4",
+    "image": "/images/realisations/rea8.jpeg",
+    "description": "Appartement de 120m² avec peinture décorative et effets spéciaux.",
+    "date": "2023",
+    "client": "Mme Bamba"
+  },
+  {
+    "id": 8,
+    "title": "Maison d'hôte",
+    "category": "Électricité",
+    "location": "Grand-Bassam",
+    "image": "/images/realisations/rea7.jpeg",
+    "description": "Construction d'une maison d'hôte de 8 chambres avec piscine et espaces communs.",
+    "date": "2024",
+    "client": "Promoteur touristique"
+  },
+  {
+    "id": 9,
+    "title": "Salle de Bain Luxe",
+    "category": "Carrelage",
+    "location": "Abidjan, Angré",
+    "image": "/images/realisations/rea9.jpeg",
+    "description": "Aménagement d'une salle de bain haut de gamme avec mosaïque et carreaux effet marbre.",
+    "date": "2024",
+    "client": "M. & Mme Kouamé"
+  },
+  {
+    "id": 10,
+    "title": "Nouvel Appartement",
+    "category": "Peinture",
+    "location": "Abidjan, Zone 4",
+    "image": "/images/realisations/rea11.jpeg",
+    "description": "Appartement de 120m² avec peinture décorative et effets spéciaux.",
+    "date": "2025",
+    "client": "M. Sanogo" 
+  }
+]

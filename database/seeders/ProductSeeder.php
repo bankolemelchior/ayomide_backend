@@ -13,8 +13,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        // Chemin vers le fichier JSON dans le dossier frontend
-        $jsonPath = base_path('../ayomide_front/app/data/products.json');
+        $jsonPath = database_path('seeders/data/products.json');
 
         if (!File::exists($jsonPath)) {
             $this->command->warn("Le fichier JSON des produits n'a pas été trouvé à l'emplacement : {$jsonPath}");
@@ -26,10 +25,16 @@ class ProductSeeder extends Seeder
 
         if (is_array($products)) {
             foreach ($products as $item) {
+                // Convert image paths to use backend storage URLs
+                $images = [];
+                foreach ($item['images'] ?? [] as $imgPath) {
+                    $images[] = $this->convertImagePath($imgPath);
+                }
+                
                 Product::updateOrCreate(
-                    ['slug' => $item['slug']], // Clé unique d'identification
+                    ['slug' => $item['slug']],
                     [
-                        'id' => $item['id'], // Conserver l'ID d'origine du JSON si nécessaire
+                        'id' => $item['id'],
                         'name' => $item['name'],
                         'price_m2' => $item['price_m2'],
                         'dimension' => $item['dimension'],
@@ -38,14 +43,25 @@ class ProductSeeder extends Seeder
                         'thickness' => $item['thickness'] ?? null,
                         'usage' => $item['usage'] ?? null,
                         'epaisseur' => $item['epaisseur'] ?? null,
-                        'images' => $item['images'] ?? [],
+                        'images' => $images,
                         'popular' => $item['popular'] ?? false,
                     ]
                 );
             }
-            $this->command->info("Produits importés avec succès depuis le JSON frontend (" . count($products) . " produits).");
+            $this->command->info("Produits importés avec succès (" . count($products) . " produits).");
         } else {
             $this->command->error("Le format du fichier JSON des produits est invalide.");
         }
+    }
+    
+    private function convertImagePath(string $path): string
+    {
+        // Replace /images/carrelage/ with /storage/carrelage/
+        if (str_starts_with($path, '/images/carrelage/')) {
+            return str_replace('/images/carrelage/', '/storage/carrelage/', $path);
+        }
+        
+        // Handle other paths if needed
+        return $path;
     }
 }

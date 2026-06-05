@@ -13,8 +13,7 @@ class RealizationSeeder extends Seeder
      */
     public function run(): void
     {
-        // Chemin vers le fichier JSON dans le dossier frontend
-        $jsonPath = base_path('../ayomide_front/app/data/realisations.json');
+        $jsonPath = database_path('seeders/data/realisations.json');
 
         if (!File::exists($jsonPath)) {
             $this->command->warn("Le fichier JSON des réalisations n'a pas été trouvé à l'emplacement : {$jsonPath}");
@@ -26,6 +25,11 @@ class RealizationSeeder extends Seeder
 
         if (is_array($realisations)) {
             foreach ($realisations as $item) {
+                $imagePath = $item['image'] ?? null;
+                if ($imagePath) {
+                    $imagePath = $this->convertImagePath($imagePath);
+                }
+                
                 Realization::updateOrCreate(
                     [
                         'title' => $item['title'],
@@ -33,17 +37,27 @@ class RealizationSeeder extends Seeder
                         'location' => $item['location'] ?? null,
                     ],
                     [
-                        'id' => $item['id'], // Conserver l'ID d'origine
-                        'image' => $item['image'] ?? null,
+                        'id' => $item['id'],
+                        'image' => $imagePath,
                         'description' => $item['description'] ?? null,
                         'date' => (string) ($item['date'] ?? ''),
                         'client' => $item['client'] ?? null,
                     ]
                 );
             }
-            $this->command->info("Réalisations importées avec succès depuis le JSON frontend (" . count($realisations) . " réalisations).");
+            $this->command->info("Réalisations importées avec succès (" . count($realisations) . " réalisations).");
         } else {
             $this->command->error("Le format du fichier JSON des réalisations est invalide.");
         }
+    }
+    
+    private function convertImagePath(string $path): string
+    {
+        // Replace /images/realisations/ with /storage/realisations/
+        if (str_starts_with($path, '/images/realisations/')) {
+            return str_replace('/images/realisations/', '/storage/realisations/', $path);
+        }
+        
+        return $path;
     }
 }
