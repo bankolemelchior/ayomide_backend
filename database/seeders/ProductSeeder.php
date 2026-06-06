@@ -56,12 +56,11 @@ class ProductSeeder extends Seeder
     
     private function convertImagePath(string $path): string
     {
-        // Replace /images/carrelage/ with /storage/carrelage/
-        if (str_starts_with($path, '/images/carrelage/')) {
-            return str_replace('/images/carrelage/', '/storage/carrelage/', $path);
+        // Convert frontend /images paths into backend /storage paths
+        if (str_starts_with($path, '/images/')) {
+            return str_replace('/images/', '/storage/', $path);
         }
-        
-        // Handle other paths if needed
+
         return $path;
     }
 }

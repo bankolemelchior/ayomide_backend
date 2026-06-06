@@ -53,11 +53,11 @@ class RealizationSeeder extends Seeder
     
     private function convertImagePath(string $path): string
     {
-        // Replace /images/realisations/ with /storage/realisations/
-        if (str_starts_with($path, '/images/realisations/')) {
-            return str_replace('/images/realisations/', '/storage/realisations/', $path);
+        // Convert frontend /images paths into backend /storage paths
+        if (str_starts_with($path, '/images/')) {
+            return str_replace('/images/', '/storage/', $path);
         }
-        
+
         return $path;
     }
 }
